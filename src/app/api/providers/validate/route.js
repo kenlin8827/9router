@@ -115,10 +115,11 @@ export async function POST(request) {
             "minimax-cn": "https://api.minimaxi.com/anthropic/v1/messages",
             alicode: "https://coding.dashscope.aliyuncs.com/v1/chat/completions",
             "alicode-intl": "https://coding-intl.dashscope.aliyuncs.com/v1/chat/completions",
+            "alitp": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
           };
 
-          // glm-cn, alicode and alicode-intl use OpenAI format
-          if (provider === "glm-cn" || provider === "alicode" || provider === "alicode-intl") {
+          // glm-cn, alicode, alicode-intl and alicode-tp use OpenAI format
+          if (provider === "glm-cn" || provider === "alicode" || provider === "alicode-intl" || provider === "alitp") {
             const testModel = getDefaultModel(provider);
             const glmCnRes = await fetch(claudeBaseUrls[provider], {
               method: "POST",
