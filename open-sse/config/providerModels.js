@@ -380,6 +380,29 @@ export const PROVIDER_MODELS = {
     { id: "qwen3-coder-plus", name: "Qwen3 Coder Plus" },
     { id: "glm-4.7", name: "GLM 4.7" },
   ],
+  alitp: [
+    // Qwen
+    { id: "qwen3.7-max", name: "Qwen3.7 Max" },
+    { id: "qwen3.6-plus", name: "Qwen3.6 Plus" },
+    { id: "qwen3.6-flash", name: "Qwen3.6 Flash" },
+    { id: "qwen-image-2.0", name: "Qwen Image 2.0", type: "image" },
+    { id: "qwen-image-2.0-pro", name: "Qwen Image 2.0 Pro", type: "image" },
+    // Wan (Wanxiang)
+    { id: "wan2.7-image", name: "Wan2.7 Image", type: "image" },
+    { id: "wan2.7-image-pro", name: "Wan2.7 Image Pro", type: "image" },
+    // DeepSeek
+    { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro" },
+    { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash" },
+    { id: "deepseek-v3.2", name: "DeepSeek V3.2" },
+    // Moonshot (Kimi)
+    { id: "kimi-k2.6", name: "Kimi K2.6" },
+    { id: "kimi-k2.5", name: "Kimi K2.5" },
+    // GLM (Zhipu AI)
+    { id: "glm-5.1", name: "GLM 5.1" },
+    { id: "glm-5", name: "GLM 5" },
+    // MiniMax
+    { id: "MiniMax-M2.5", name: "MiniMax M2.5" },
+  ],
   "volcengine-ark": [
     { id: "Doubao-Seed-2.0-Code", name: "Doubao-Seed-2.0-Code" },
     { id: "Doubao-Seed-2.0-pro", name: "Doubao-Seed-2.0-pro" },

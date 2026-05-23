@@ -72,6 +72,7 @@ export const PROVIDER_ENDPOINTS = {
   "minimax-cn": "https://api.minimaxi.com/anthropic/v1/messages",
   alicode: "https://coding.dashscope.aliyuncs.com/v1/chat/completions",
   "alicode-intl": "https://coding-intl.dashscope.aliyuncs.com/v1/chat/completions",
+  alitp: "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
   "volcengine-ark": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
   byteplus: "https://ark.ap-southeast.bytepluses.com/api/coding/v3/chat/completions",
   openai: "https://api.openai.com/v1/chat/completions",
