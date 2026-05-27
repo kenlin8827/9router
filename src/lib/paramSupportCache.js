@@ -156,7 +156,7 @@ export function detectUnsupportedParam(errorBody) {
   
   const patterns = [
     { param: "max_tokens", keywords: ["max_tokens"] },
-    { param: "max_completion_tokens", keywords: ["max_completion_tokens", "max_completion"] },
+    { param: "max_completion_tokens", keywords: ["max_completion_tokens", "max_completion_token", "max_completion"] },
     { param: "reasoning_effort", keywords: ["reasoning_effort", "reasoningeffort"] },
     { param: "thinking", keywords: ["thinking", "budget_tokens"] },
     { param: "response_format.json_schema", keywords: ["json_schema", "structured output"] },
@@ -169,7 +169,7 @@ export function detectUnsupportedParam(errorBody) {
 
   // Error keywords that indicate parameter is NOT SUPPORTED (not just invalid value)
   // "invalid" alone can mean "invalid value" (range/type issue), not "parameter unsupported"
-  const unsupportedKeywords = ["unknown", "unsupported", "not supported", "unexpected", "unrecognized", "does not support", "unsupported parameter"];
+  const unsupportedKeywords = ["unknown", "unsupported", "not supported", "unexpected", "unrecognized", "does not support", "unsupported parameter", "invalid_parameter_error", "invalid parameter"];
   
   // Keywords that indicate VALUE is invalid (parameter IS supported, value is wrong)
   const valueErrorKeywords = ["invalid value", "out of range", "must be between", "must be", "value should", "range", "minimum", "maximum"];
