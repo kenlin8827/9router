@@ -136,6 +136,13 @@ export async function adaptParams(connectionId, modelId, body) {
     delete adapted.max_completion_tokens;
   }
 
+  // max_completion_token -> max_tokens (tolerate singular client/upstream variants)
+  if (adapted.max_completion_token !== undefined && cached.max_completion_tokens === false) {
+    console.log(`[ParamAdapter] ${modelId}: max_completion_token -> max_tokens`);
+    adapted.max_tokens = adapted.max_completion_token;
+    delete adapted.max_completion_token;
+  }
+
   // reasoning_effort → delete
   if (adapted.reasoning_effort !== undefined && cached.reasoning_effort === false) {
     console.log(`[ParamAdapter] ${modelId}: removing reasoning_effort`);
