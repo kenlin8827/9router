@@ -184,7 +184,9 @@ export async function handleChatCore({ body, modelInfo, credentials, log, onCred
   // Execute request
   let providerResponse, providerUrl, providerHeaders, finalBody;
   try {
-    const result = await executor.execute({ model, body: translatedBody, stream, credentials, signal: streamController.signal, log, proxyOptions });
+    // Wrap executor.execute with param adaptation and retry
+    const { wrapExecute } = await import("../../src/lib/paramAdapter.js");
+    const result = await wrapExecute(executor, { model, body: translatedBody, stream, credentials, signal: streamController.signal, log, proxyOptions, connectionId });
     providerResponse = result.response;
     providerUrl = result.url;
     providerHeaders = result.headers;
@@ -223,8 +225,9 @@ export async function handleChatCore({ body, modelInfo, credentials, log, onCred
           try { await onCredentialsRefreshed(newCredentials); } catch (e) { log?.warn?.("TOKEN", `onCredentialsRefreshed failed: ${e.message}`); }
         }
         try {
-          const retryResult = await executor.execute({ model, body: translatedBody, stream, credentials, signal: streamController.signal, log, proxyOptions });
-          if (retryResult.response.ok) { providerResponse = retryResult.response; providerUrl = retryResult.url; }
+          const { wrapExecute } = await import("../../src/lib/paramAdapter.js");
+          const retryResult = await wrapExecute(executor, { model, body: translatedBody, stream, credentials, signal: streamController.signal, log, proxyOptions, connectionId });
+          if (retryResult.response.ok) { providerResponse = retryResult.response; providerUrl = retryResult.url; providerHeaders = retryResult.headers; finalBody = retryResult.transformedBody; }
         } catch { log?.warn?.("TOKEN", `${provider.toUpperCase()} | retry after refresh failed`); }
       } else {
         log?.warn?.("TOKEN", `${provider.toUpperCase()} | refresh failed`);
