@@ -16,20 +16,14 @@ export default {
   },
   category: "apikey",
   transport: {
-    baseUrl: "https://api.minimax.io/anthropic/v1/messages",
-    format: "claude",
-    urlSuffix: "?beta=true",
-    headers: { ...CLAUDE_API_HEADERS },
-    quirks: {
-      dropOutputConfig: true,
-    },
+    baseUrl: "https://api.minimax.io/v1/chat/completions",
     reasoningInject: {
       scope: "all",
     },
     auth: {
       combined: true,
-      header: "x-api-key",
-      scheme: "raw",
+      header: "Authorization",
+      scheme: "bearer",
     },
     usage: {
       urls: [
@@ -54,7 +48,7 @@ export default {
     },
   ],
   models: [
-    { id: "MiniMax-M3", name: "MiniMax M3", targetFormat: "claude" },
+    { id: "MiniMax-M3", name: "MiniMax M3" },
     { id: "MiniMax-M2.7", name: "MiniMax M2.7" },
     { id: "MiniMax-M2.5", name: "MiniMax M2.5" },
     { id: "MiniMax-M2.1", name: "MiniMax M2.1" },
